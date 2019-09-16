@@ -1,5 +1,10 @@
+# Timothy Gaede
+# 2019-09-16
+# TimGaede@gmail.com
+
 using Formatting
 
+#-------------------------------------------------------------------------------
 function ΔvLEO(Isp, m₀_to_m)
 # Unless otherwise implied, all physical units are of the kms system
 #
@@ -11,16 +16,15 @@ function ΔvLEO(Isp, m₀_to_m)
     hr = 60*60
     day = 24hr
     R🌏 = 6.3781 * 10^6
+
     # μ = GM
+    # μ is much more accurately known than either G or M.  Think about it.
     μ🌏 = 3.9860044188 * 10.0^14
     μ🌞 = 1.327124400189 * 10.0^20
+
     AU = 149_597_870_700.0
 
-
     yr = τ*√(AU^3 / μ🌞)
-
-
-
 
     Δv🚀🌏 = 9.80665*Isp*log(m₀_to_m) # change in speed of rocket wrt Earth
 
@@ -167,11 +171,14 @@ function ΔvLEO(Isp, m₀_to_m)
 
 
 end
+#-------------------------------------------------------------------------------
 
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function main()
     println("\n", "-"^40, "\n")
 
     println(ΔvLEO(380, 3.204))
 end
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 main()
