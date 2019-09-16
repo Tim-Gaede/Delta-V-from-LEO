@@ -8,10 +8,12 @@ using Formatting
 # Yields result of a Δv from Low Earth Orbit
 # given specfic impulse (in seconds) and
 # initial-to-final rocket mass ratio
+
 function ΔvLEO(Isp, mᵢ_to_m)
-# Unless otherwise implied, all physical units are of the kms system
-#
-# Assumes Δv will be in the direction of Earth orbiting the Sun
+    
+    # Unless otherwise implied, all physical units are of the kms system
+    
+    # Assumes Δv will be in the direction of Earth orbiting the Sun
 
     τ = 2π
     k = 1000
