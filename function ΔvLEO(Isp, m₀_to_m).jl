@@ -5,7 +5,10 @@
 using Formatting
 
 #-------------------------------------------------------------------------------
-function ΔvLEO(Isp, m₀_to_m)
+# Yields result of a Δv from Low Earth Orbit
+# given specfic impulse (in seconds) and
+# initial-to-final rocket mass ratio
+function ΔvLEO(Isp, mᵢ_to_m)
 # Unless otherwise implied, all physical units are of the kms system
 #
 # Assumes Δv will be in the direction of Earth orbiting the Sun
@@ -17,7 +20,7 @@ function ΔvLEO(Isp, m₀_to_m)
     day = 24hr
     R🌏 = 6.3781 * 10^6
 
-    # μ = GM
+    # The standard gravitational parameter, μ is equal to GM
     # μ is much more accurately known than either G or M.  Think about it.
     μ🌏 = 3.9860044188 * 10.0^14
     μ🌞 = 1.327124400189 * 10.0^20
@@ -26,7 +29,7 @@ function ΔvLEO(Isp, m₀_to_m)
 
     yr = τ*√(AU^3 / μ🌞)
 
-    Δv🚀🌏 = 9.80665*Isp*log(m₀_to_m) # change in speed of rocket wrt Earth
+    Δv🚀🌏 = 9.80665*Isp*log(mᵢ_to_m) # change in speed of rocket wrt Earth
 
 
 
@@ -142,11 +145,8 @@ function ΔvLEO(Isp, m₀_to_m)
                 strAUperYr = format(v_AUperYr, precision=3) * " AU per year"
             elseif v_AUperYr < 10k
                 strAUperYr = format(v_AUperYr, precision=2) * " AU per year"
-            elseif v_AUperYr < 100k
-                strAUperYr = format(v_AUperYr, precision=1) * " AU per year"
             else
-                v_AUperYr = convert(Int, floor(v_AUperYr))
-                strAUperYr = format(v_AUperYr, commas=true) * " AU per year"
+                return "We're getting relativistic."
             end
 
             "The rocket will escape the Solar System\n" *
