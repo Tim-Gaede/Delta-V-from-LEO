@@ -40,6 +40,7 @@ function ΔvLEO(Isp, m₀_to_m)
 
     n = vₚ🚀🌏 / vₒ🚀🌏 # velocity ratio
     n² = n^2
+
     if n² < 2 # Orbits the Earth
 
         rₐ🚀🌏 = rₒ🚀🌏 * n² / (2 - n²) # apogee
@@ -79,8 +80,6 @@ function ΔvLEO(Isp, m₀_to_m)
         v🌏🌞 = √(μ🌞 / AU) # Speed of Earth orbit around Sun
         vₚ🚀🌏 = √(vₚ🚀🌏^2 - vₑ🚀🌏^2) # wrt Earth
         vₚ🚀🌞 = vₚ🚀🌏 + v🌏🌞 # wrt Sun
-        vₑ🌏🌞 = √2v🌏🌞 # Escape speed from Sun at one AU
-
 
 
         N = vₚ🚀🌞 / v🌏🌞 # velocity ratio
@@ -131,7 +130,7 @@ function ΔvLEO(Isp, m₀_to_m)
             "Its aphelion will be " * strAp * "."
 
         elseif N² > 2 # Rocket escapes the Solar System
-
+            vₑ🌏🌞 = √2v🌏🌞 # Escape speed from Sun at one AU
             v∞🚀🌞 = √(vₚ🚀🌞^2 - vₑ🌏🌞^2) # Asymptopic speed
             v_AUperYr = v∞🚀🌞 / (AU / yr)
 
@@ -178,7 +177,7 @@ end
 function main()
     println("\n", "-"^40, "\n")
 
-    println(ΔvLEO(380, 3.204))
+    println(ΔvLEO(380, 3.2))
 end
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 main()
