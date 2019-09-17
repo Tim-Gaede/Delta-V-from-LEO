@@ -82,7 +82,7 @@ function ΔvLEO(Isp, mᵢ_to_m)
 
     elseif n² > 2 # Rocket escapes Earth.  Will it escape the Solar System?
         vₑ🚀🌏= √2vₒ🚀🌏  # escape speed from LEO
-        v🌏🌞 = √(μ🌞 / AU) # Speed of Earth orbit around Sun
+        v🌏🌞 = √(μ🌞 / a🌏) # Speed of Earth orbit around Sun
         vₚ🚀🌏 = √(vₚ🚀🌏^2 - vₑ🚀🌏^2) # wrt Earth
         vₚ🚀🌞 = vₚ🚀🌏 + v🌏🌞 # wrt Sun
 
