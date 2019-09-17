@@ -21,7 +21,7 @@ function ΔvLEO(Isp, mᵢ_to_m)
     hr = 60*60
     day = 24hr
     R🌏 = 6.3781 * 10^6
-
+    a🌏 = 149_598_023.0k
     # The standard gravitational parameter, μ is equal to GM
     # μ is much more accurately known than either G or M.  Think about it.
     μ🌏 = 3.9860044188 * 10.0^14
@@ -29,7 +29,7 @@ function ΔvLEO(Isp, mᵢ_to_m)
 
     AU = 149_597_870_700.0
 
-    yr = τ*√(AU^3 / μ🌞)
+    yr = τ*√(a🌏^3 / μ🌞)
 
     Δv🚀🌏 = 9.80665*Isp*log(mᵢ_to_m) # change in speed of rocket wrt Earth
 
@@ -182,4 +182,4 @@ function main()
     println(ΔvLEO(380, 3.2))
 end
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main()
+main() 
